@@ -93,24 +93,24 @@ tailwind.config = { theme: { extend: {
 
 <script>
   const MENU = [
-    {cat:'Lahmacunlar', name:'Lahmacun', price:80, icon:'🔥'},
-    {cat:'Lahmacunlar', name:'Malatya Lahmacun', price:150, icon:'🌶️'},
-    {cat:'Pideler', name:'Kıymalı Pide', price:150, icon:'🥩'},
-    {cat:'Pideler', name:'Kıymalı Kaşarlı Pide', price:200, icon:'🧀'},
-    {cat:'Pideler', name:'Kavurmalı Pide', price:null, icon:'🥩'},
-    {cat:'Pideler', name:'Kavurmalı Kaşarlı Pide', price:225, icon:'🧀'},
-    {cat:'Pideler', name:'Kavurmalı Yumurtalı Pide', price:225, icon:'🥚'},
-    {cat:'Pideler', name:'Karışık Pide', price:225, icon:'🍕'},
-    {cat:'Pideler', name:'Kaşarlı Pide', price:175, icon:'🧀'},
-    {cat:'Pideler', name:'Kaşarlı Sucuklu Pide', price:200, icon:'🌭'},
-    {cat:'Pideler', name:'Sucuklu Yumurtalı Pide', price:150, icon:'🍳'},
-    {cat:'Katmerler', name:'Kıymalı Katmer', price:null, icon:'🥟'},
-    {cat:'Katmerler', name:'Sucuklu Katmer', price:null, icon:'🌭'},
-    {cat:'Katmerler', name:'Peynirli Katmer', price:null, icon:'🧀'},
-    {cat:'Katmerler', name:'Patatesli Katmer', price:null, icon:'🥔'},
-    {cat:'Katmerler', name:'Yağlı Katmer', price:null, icon:'🧈'},
-    {cat:'Katmerler', name:'Tırnaklı / Evcil Pide', price:null, icon:'🫓'},
-    {cat:'Katmerler', name:'Lavaş', price:null, icon:'🫓'}
+    {cat:'Lahmacunlar', name:'Lahmacun', price:80, img:'https://loremflickr.com/400/400/lahmacun,food'},
+    {cat:'Lahmacunlar', name:'Malatya Lahmacun', price:150, img:'https://loremflickr.com/400/400/lahmacun,meat'},
+    {cat:'Pideler', name:'Kıymalı Pide', price:150, img:'https://loremflickr.com/400/400/pide,meat'},
+    {cat:'Pideler', name:'Kıymalı Kaşarlı Pide', price:200, img:'https://loremflickr.com/400/400/pide,cheese'},
+    {cat:'Pideler', name:'Kavurmalı Pide', price:null, img:'https://loremflickr.com/400/400/pide,meat'},
+    {cat:'Pideler', name:'Kavurmalı Kaşarlı Pide', price:225, img:'https://loremflickr.com/400/400/pide,cheese'},
+    {cat:'Pideler', name:'Kavurmalı Yumurtalı Pide', price:225, img:'https://loremflickr.com/400/400/pide,egg'},
+    {cat:'Pideler', name:'Karışık Pide', price:225, img:'https://loremflickr.com/400/400/pide,mixed'},
+    {cat:'Pideler', name:'Kaşarlı Pide', price:175, img:'https://loremflickr.com/400/400/pide,cheese'},
+    {cat:'Pideler', name:'Kaşarlı Sucuklu Pide', price:200, img:'https://loremflickr.com/400/400/pide,sucuk'},
+    {cat:'Pideler', name:'Sucuklu Yumurtalı Pide', price:150, img:'https://loremflickr.com/400/400/pide,egg'},
+    {cat:'Katmerler', name:'Kıymalı Katmer', price:null, img:'https://loremflickr.com/400/400/katmer,meat'},
+    {cat:'Katmerler', name:'Sucuklu Katmer', price:null, img:'https://loremflickr.com/400/400/katmer,sucuk'},
+    {cat:'Katmerler', name:'Peynirli Katmer', price:null, img:'https://loremflickr.com/400/400/katmer,cheese'},
+    {cat:'Katmerler', name:'Patatesli Katmer', price:null, img:'https://loremflickr.com/400/400/katmer,potato'},
+    {cat:'Katmerler', name:'Yağlı Katmer', price:null, img:'https://loremflickr.com/400/400/flatbread,butter'},
+    {cat:'Katmerler', name:'Tırnaklı / Evcil Pide', price:null, img:'https://loremflickr.com/400/400/bread,bakery'},
+    {cat:'Katmerler', name:'Lavaş', price:null, img:'https://loremflickr.com/400/400/lavash,bread'}
   ];
   const qty = {};
   MENU.forEach(m => qty[m.name] = 0);
@@ -123,14 +123,16 @@ tailwind.config = { theme: { extend: {
         <p class="text-[10px] tracking-[0.35em] uppercase text-clay mb-4">${cat}</p>
         <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4">
           ${MENU.filter(m=>m.cat===cat).map(m => `
-            <div class="product-card aspect-square rounded-2xl bg-white border border-ink/10 p-4 flex flex-col items-center justify-center text-center">
-              <span class="text-3xl mb-2">${m.icon}</span>
-              <h3 class="display text-base leading-tight text-ink">${m.name}</h3>
-              <p class="text-xs text-ink/50 mt-1">${m.price ? m.price + ' ₺' : 'Fiyat sorunuz'}</p>
-              <div class="flex items-center gap-2 mt-3">
-                <button type="button" onclick="chg('${m.name}',-1)" class="w-8 h-8 rounded-full bg-ink/5 hover:bg-ink/10 flex items-center justify-center text-ink">−</button>
-                <span id="q_${m.name}" class="w-6 text-center text-sm font-medium">${qty[m.name]}</span>
-                <button type="button" onclick="chg('${m.name}',1)" class="w-8 h-8 rounded-full bg-clay text-paper hover:bg-[#9f4e2f] flex items-center justify-center">+</button>
+            <div class="product-card aspect-square rounded-2xl overflow-hidden relative border border-ink/10" style="background-image:url('${m.img}');background-size:cover;background-position:center;">
+              <div class="absolute inset-0 bg-gradient-to-t from-ink/90 via-ink/30 to-transparent"></div>
+              <div class="absolute top-2 right-2 bg-paper/90 text-ink text-xs font-medium px-2 py-0.5 rounded-full">${m.price ? m.price + ' ₺' : 'Fiyat sorunuz'}</div>
+              <div class="absolute bottom-0 left-0 right-0 p-3 text-center text-paper">
+                <h3 class="display text-sm leading-tight">${m.name}</h3>
+                <div class="flex items-center justify-center gap-2 mt-2">
+                  <button type="button" onclick="chg('${m.name}',-1)" class="w-7 h-7 rounded-full bg-paper/20 hover:bg-paper/30 flex items-center justify-center text-paper">−</button>
+                  <span id="q_${m.name}" class="w-6 text-center text-sm font-medium">${qty[m.name]}</span>
+                  <button type="button" onclick="chg('${m.name}',1)" class="w-7 h-7 rounded-full bg-clay text-paper hover:bg-[#9f4e2f] flex items-center justify-center">+</button>
+                </div>
               </div>
             </div>
           `).join('')}
