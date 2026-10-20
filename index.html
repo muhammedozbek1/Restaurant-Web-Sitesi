@@ -80,7 +80,7 @@ tailwind.config = { theme: { extend: {
 <!-- Hero -->
 <section id="top" class="relative min-h-[90vh] flex items-center overflow-hidden">
   <div class="absolute inset-0" style="background: linear-gradient(135deg, #2b1d17 0%, #5a2a1a 40%, #b85c38 100%);"></div>
-  <img src="https://images.unsplash.com/photo-1590947130387-155cc02e297f?w=1600&q=80&auto=format&fit=crop" alt="Taş fırından pide" class="absolute inset-0 w-full h-full object-cover" loading="eager"
+  <img src="https://images.pexels.com/photos/37290080/pexels-photo-37290080.jpeg?auto=compress&cs=tinysrgb&w=1200" alt="Taş fırından pide" class="absolute inset-0 w-full h-full object-cover" loading="eager"
     onerror="this.style.display='none'" />
   <div class="absolute inset-0 bg-gradient-to-r from-ink/90 via-ink/55 to-ink/10"></div>
   <div class="absolute inset-0 bg-gradient-to-t from-ink/40 via-transparent to-transparent"></div>
@@ -174,7 +174,8 @@ tailwind.config = { theme: { extend: {
         <p class="text-[10px] tracking-[0.35em] uppercase text-paper/40 mb-4">${cat}</p>
         <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4">
           ${MENU_ITEMS.filter(m=>m.cat===cat).map(m => `
-            <div class="product-card aspect-square rounded-2xl overflow-hidden relative border border-paper/10" style="background-image:url('${m.img}');background-size:cover;background-position:center;">
+            <div class="product-card aspect-square rounded-2xl overflow-hidden relative border border-paper/10 bg-soot">
+              <img src="${m.img}" alt="${m.name}" class="absolute inset-0 w-full h-full object-cover" loading="lazy" onerror="this.style.display='none'" />
               <div class="absolute inset-0 bg-gradient-to-t from-ink/90 via-ink/30 to-transparent"></div>
               <div class="absolute bottom-0 left-0 right-0 p-3 text-center text-paper">
                 <h3 class="display text-sm leading-tight">${m.name}</h3>
