@@ -4,7 +4,7 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>Sipariş — Ali Baba Pide ve Lahmacun Salonu</title>
-<meta name="description" content="Ali Baba Pide ve Lahmacun Salonu online sipariş. Ürün seçin, WhatsApp ile gönderin." />
+<meta name="description" content="Ali Baba Pide ve Lahmacun Salonu online sipariş." />
 <script src="https://cdn.tailwindcss.com"></script>
 <script>
 tailwind.config = { theme: { extend: {
@@ -20,12 +20,11 @@ tailwind.config = { theme: { extend: {
   body { font-family: 'Manrope', system-ui, sans-serif; background-color: #f5ede0; color: #1f1410; }
   .paper-bg { background-color: #f5ede0; background-image: var(--noise), radial-gradient(1200px 600px at 10% -10%, #e9d9bf 0%, transparent 60%), radial-gradient(900px 500px at 100% 20%, #ecdcc3 0%, transparent 55%); }
   .ink-bg { background-color: #1f1410; background-image: var(--noise); }
-  .clay-bg { background-color: #b85c38; background-image: var(--noise); }
   .display { font-family: 'Fraunces', Georgia, serif; font-optical-sizing: auto; }
   .btn-clay { background: #b85c38; color: #f5ede0; transition: background .2s, transform .2s; }
   .btn-clay:hover { background: #9f4e2f; transform: translateY(-1px); }
-  .product-card { transition: transform .2s ease, box-shadow .2s ease, border-color .2s; }
-  .product-card:hover { transform: translateY(-3px); box-shadow: 0 14px 30px rgba(31,20,16,.12); border-color: #b85c38; }
+  .product-row { transition: background .2s; }
+  .product-row:hover { background: rgba(184,92,56,.06); }
 </style>
 </head>
 <body class="paper-bg">
@@ -38,125 +37,120 @@ tailwind.config = { theme: { extend: {
 </div>
 
 <header class="sticky top-0 z-40 bg-paper/90 backdrop-blur border-b border-ink/10">
-  <div class="max-w-[1200px] mx-auto px-6 h-[74px] flex items-center justify-between">
+  <div class="max-w-[900px] mx-auto px-4 h-[64px] flex items-center justify-between">
     <a href="index.html" class="flex items-center gap-3">
-      <span class="w-11 h-11 rounded-full bg-clay text-paper flex items-center justify-center font-display text-2xl shadow-md">A</span>
+      <span class="w-10 h-10 rounded-full bg-clay text-paper flex items-center justify-center font-display text-xl shadow-md">A</span>
       <span>
-        <span class="block font-display text-xl leading-none">Ali Baba</span>
-        <span class="block text-[10px] tracking-[0.35em] uppercase text-ink/50 mt-1">Sipariş</span>
+        <span class="block font-display text-lg leading-none">Ali Baba</span>
+        <span class="block text-[9px] tracking-[0.35em] uppercase text-ink/50 mt-1">Sipariş</span>
       </span>
     </a>
     <a href="index.html" class="text-xs tracking-[0.2em] uppercase text-ink/60 hover:text-clay">← Ana Sayfa</a>
   </div>
 </header>
 
-<main class="max-w-[1200px] mx-auto px-6 py-12">
-  <div class="text-center mb-10">
+<main class="max-w-[900px] mx-auto px-4 py-6 pb-40">
+  <div class="mb-6">
     <p class="text-[11px] tracking-[0.4em] uppercase text-clay">Sipariş</p>
-    <h1 class="display text-4xl md:text-5xl mt-2">Ürünleri Seçin</h1>
-    <p class="text-sm text-ink/60 mt-3 max-w-[560px] mx-auto">Adet seçin, bilgilerinizi girin ve WhatsApp ile gönderin. Fiyatı olmayan ürünler için lütfen arayın.</p>
+    <h1 class="display text-3xl md:text-4xl mt-1">Ürünleri Seçin</h1>
+    <p class="text-sm text-ink/60 mt-2">Adet seçin; seçtiğiniz ürünler alta eklenir. Fiyatı olmayan ürünler için lütfen arayın.</p>
   </div>
 
-  <div id="productGrids"></div>
+  <div id="productRows" class="space-y-2"></div>
 
-  <!-- Sepet özeti -->
-  <div class="mt-12 bg-white rounded-3xl border border-ink/10 p-6 shadow-sm">
-    <div class="flex items-center justify-between mb-4">
-      <h2 class="display text-2xl">Sipariş Özeti</h2>
-      <span id="orderTotal" class="display text-2xl text-clay">0 ₺</span>
-    </div>
-    <div id="orderSummary" class="text-sm text-ink/70 mb-4 space-y-1"></div>
+  <!-- Müşteri bilgileri -->
+  <div class="mt-8 bg-white rounded-2xl border border-ink/10 p-5">
+    <h2 class="display text-xl mb-3">Teslimat Bilgileri</h2>
     <div class="grid md:grid-cols-2 gap-3 mb-3">
       <input id="custName" type="text" placeholder="Ad Soyad" class="px-4 py-3 rounded-xl border border-ink/15 bg-paper text-sm focus:outline-none focus:border-clay" />
       <input id="custPhone" type="tel" placeholder="Telefon" class="px-4 py-3 rounded-xl border border-ink/15 bg-paper text-sm focus:outline-none focus:border-clay" />
     </div>
     <input id="custAddress" type="text" placeholder="Adres / Teslimat notu" class="w-full px-4 py-3 rounded-xl border border-ink/15 bg-paper text-sm focus:outline-none focus:border-clay mb-3" />
-    <textarea id="custNote" rows="2" placeholder="Ek not (isteğe bağlı)" class="w-full px-4 py-3 rounded-xl border border-ink/15 bg-paper text-sm focus:outline-none focus:border-clay mb-4"></textarea>
-    <div class="flex flex-wrap gap-3">
-      <button type="button" onclick="sendOrder()" class="btn-clay px-8 py-3.5 rounded-full text-xs tracking-[0.2em] uppercase shadow-lg">WhatsApp'a Gönder</button>
-      <button type="button" onclick="clearOrder()" class="border border-ink/20 px-8 py-3.5 rounded-full text-xs tracking-[0.2em] uppercase hover:border-clay hover:text-clay">Temizle</button>
-    </div>
+    <textarea id="custNote" rows="2" placeholder="Ek not (isteğe bağlı)" class="w-full px-4 py-3 rounded-xl border border-ink/15 bg-paper text-sm focus:outline-none focus:border-clay"></textarea>
   </div>
 </main>
 
-<footer class="ink-bg text-paper mt-10">
-  <div class="max-w-[1200px] mx-auto px-6 py-10 flex flex-col md:flex-row items-center justify-between gap-4">
-    <p class="display text-2xl">Ali Baba <span class="text-paper/40 text-sm font-sans tracking-[0.3em] uppercase">Pide • Lahmacun</span></p>
-    <p class="text-xs text-paper/60 text-center">İnönü Mah. 381. Sok. No:26B, Bağcılar / İstanbul • 0212 433 01 40</p>
-    <p class="text-xs text-paper/40">© 2026</p>
+<!-- Sabit alt bar -->
+<div id="bottomBar" class="fixed bottom-0 left-0 right-0 z-50 hidden bg-ink text-paper border-t border-paper/10 shadow-2xl">
+  <div class="max-w-[900px] mx-auto px-4 py-3 flex items-center justify-between gap-3">
+    <div class="min-w-0">
+      <p class="text-[10px] tracking-[0.3em] uppercase text-paper/50">Toplam</p>
+      <p id="barTotal" class="display text-xl text-gold">0 ₺</p>
+      <p id="barCount" class="text-xs text-paper/60 truncate">0 ürün</p>
+    </div>
+    <button type="button" onclick="sendOrder()" class="btn-clay px-6 py-3 rounded-full text-xs tracking-[0.2em] uppercase shadow-lg whitespace-nowrap">Siparişi Tamamla</button>
   </div>
-</footer>
-
-<a href="https://wa.me/902124330140?text=Merhaba%2C%20sipari%C5%9F%20vermek%20istiyorum" target="_blank" rel="noopener" aria-label="WhatsApp'tan Sipariş" class="fixed bottom-[88px] right-5 z-50 w-[54px] h-[54px] rounded-full bg-[#25D366] text-white flex items-center justify-center shadow-xl hover:scale-105 transition">
-  <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413z"/></svg>
-</a>
+</div>
 
 <script>
   const MENU = [
-    {cat:'Lahmacunlar', name:'Lahmacun', price:80, img:'https://images.pexels.com/photos/24427085/pexels-photo-24427085.jpeg?auto=compress&cs=tinysrgb&w=400'},
-    {cat:'Lahmacunlar', name:'Malatya Lahmacun', price:150, img:'https://images.pexels.com/photos/7545570/pexels-photo-7545570.jpeg?auto=compress&cs=tinysrgb&w=400'},
-    {cat:'Pideler', name:'Kıymalı Pide', price:150, img:'https://images.pexels.com/photos/5639357/pexels-photo-5639357.jpeg?auto=compress&cs=tinysrgb&w=400'},
-    {cat:'Pideler', name:'Kıymalı Kaşarlı Pide', price:200, img:'https://images.pexels.com/photos/37290083/pexels-photo-37290083.jpeg?auto=compress&cs=tinysrgb&w=400'},
-    {cat:'Pideler', name:'Kavurmalı Pide', price:null, img:'https://images.pexels.com/photos/5639357/pexels-photo-5639357.jpeg?auto=compress&cs=tinysrgb&w=400'},
-    {cat:'Pideler', name:'Kavurmalı Kaşarlı Pide', price:225, img:'https://images.pexels.com/photos/37290083/pexels-photo-37290083.jpeg?auto=compress&cs=tinysrgb&w=400'},
-    {cat:'Pideler', name:'Kavurmalı Yumurtalı Pide', price:225, img:'https://images.pexels.com/photos/37290083/pexels-photo-37290083.jpeg?auto=compress&cs=tinysrgb&w=400'},
-    {cat:'Pideler', name:'Karışık Pide', price:225, img:'https://images.pexels.com/photos/5639357/pexels-photo-5639357.jpeg?auto=compress&cs=tinysrgb&w=400'},
-    {cat:'Pideler', name:'Kaşarlı Pide', price:175, img:'https://images.pexels.com/photos/37290083/pexels-photo-37290083.jpeg?auto=compress&cs=tinysrgb&w=400'},
-    {cat:'Pideler', name:'Kaşarlı Sucuklu Pide', price:200, img:'https://images.pexels.com/photos/5639357/pexels-photo-5639357.jpeg?auto=compress&cs=tinysrgb&w=400'},
-    {cat:'Pideler', name:'Sucuklu Yumurtalı Pide', price:150, img:'https://images.pexels.com/photos/5639357/pexels-photo-5639357.jpeg?auto=compress&cs=tinysrgb&w=400'},
-    {cat:'Katmerler', name:'Kıymalı Katmer', price:null, img:'https://images.pexels.com/photos/37290080/pexels-photo-37290080.jpeg?auto=compress&cs=tinysrgb&w=400'},
-    {cat:'Katmerler', name:'Sucuklu Katmer', price:null, img:'https://images.pexels.com/photos/37290080/pexels-photo-37290080.jpeg?auto=compress&cs=tinysrgb&w=400'},
-    {cat:'Katmerler', name:'Peynirli Katmer', price:null, img:'https://images.pexels.com/photos/37290080/pexels-photo-37290080.jpeg?auto=compress&cs=tinysrgb&w=400'},
-    {cat:'Katmerler', name:'Patatesli Katmer', price:null, img:'https://images.pexels.com/photos/37290080/pexels-photo-37290080.jpeg?auto=compress&cs=tinysrgb&w=400'},
-    {cat:'Katmerler', name:'Yağlı Katmer', price:null, img:'https://images.pexels.com/photos/37290080/pexels-photo-37290080.jpeg?auto=compress&cs=tinysrgb&w=400'},
-    {cat:'Katmerler', name:'Tırnaklı / Evcil Pide', price:null, img:'https://images.pexels.com/photos/37290088/pexels-photo-37290088.jpeg?auto=compress&cs=tinysrgb&w=400'},
-    {cat:'Katmerler', name:'Lavaş', price:null, img:'https://images.pexels.com/photos/37290088/pexels-photo-37290088.jpeg?auto=compress&cs=tinysrgb&w=400'}
+    {cat:'Lahmacunlar', name:'Lahmacun', price:80, img:'https://images.pexels.com/photos/24427085/pexels-photo-24427085.jpeg?auto=compress&cs=tinysrgb&w=200'},
+    {cat:'Lahmacunlar', name:'Malatya Lahmacun', price:150, img:'https://images.pexels.com/photos/7545570/pexels-photo-7545570.jpeg?auto=compress&cs=tinysrgb&w=200'},
+    {cat:'Pideler', name:'Kıymalı Pide', price:150, img:'https://images.pexels.com/photos/5639357/pexels-photo-5639357.jpeg?auto=compress&cs=tinysrgb&w=200'},
+    {cat:'Pideler', name:'Kıymalı Kaşarlı Pide', price:200, img:'https://images.pexels.com/photos/37290083/pexels-photo-37290083.jpeg?auto=compress&cs=tinysrgb&w=200'},
+    {cat:'Pideler', name:'Kavurmalı Pide', price:null, img:'https://images.pexels.com/photos/5639357/pexels-photo-5639357.jpeg?auto=compress&cs=tinysrgb&w=200'},
+    {cat:'Pideler', name:'Kavurmalı Kaşarlı Pide', price:225, img:'https://images.pexels.com/photos/37290083/pexels-photo-37290083.jpeg?auto=compress&cs=tinysrgb&w=200'},
+    {cat:'Pideler', name:'Kavurmalı Yumurtalı Pide', price:225, img:'https://images.pexels.com/photos/37290083/pexels-photo-37290083.jpeg?auto=compress&cs=tinysrgb&w=200'},
+    {cat:'Pideler', name:'Karışık Pide', price:225, img:'https://images.pexels.com/photos/5639357/pexels-photo-5639357.jpeg?auto=compress&cs=tinysrgb&w=200'},
+    {cat:'Pideler', name:'Kaşarlı Pide', price:175, img:'https://images.pexels.com/photos/37290083/pexels-photo-37290083.jpeg?auto=compress&cs=tinysrgb&w=200'},
+    {cat:'Pideler', name:'Kaşarlı Sucuklu Pide', price:200, img:'https://images.pexels.com/photos/5639357/pexels-photo-5639357.jpeg?auto=compress&cs=tinysrgb&w=200'},
+    {cat:'Pideler', name:'Sucuklu Yumurtalı Pide', price:150, img:'https://images.pexels.com/photos/5639357/pexels-photo-5639357.jpeg?auto=compress&cs=tinysrgb&w=200'},
+    {cat:'Katmerler', name:'Kıymalı Katmer', price:null, img:'https://images.pexels.com/photos/37290080/pexels-photo-37290080.jpeg?auto=compress&cs=tinysrgb&w=200'},
+    {cat:'Katmerler', name:'Sucuklu Katmer', price:null, img:'https://images.pexels.com/photos/37290080/pexels-photo-37290080.jpeg?auto=compress&cs=tinysrgb&w=200'},
+    {cat:'Katmerler', name:'Peynirli Katmer', price:null, img:'https://images.pexels.com/photos/37290080/pexels-photo-37290080.jpeg?auto=compress&cs=tinysrgb&w=200'},
+    {cat:'Katmerler', name:'Patatesli Katmer', price:null, img:'https://images.pexels.com/photos/37290080/pexels-photo-37290080.jpeg?auto=compress&cs=tinysrgb&w=200'},
+    {cat:'Katmerler', name:'Yağlı Katmer', price:null, img:'https://images.pexels.com/photos/37290080/pexels-photo-37290080.jpeg?auto=compress&cs=tinysrgb&w=200'},
+    {cat:'Katmerler', name:'Tırnaklı / Evcil Pide', price:null, img:'https://images.pexels.com/photos/37290088/pexels-photo-37290088.jpeg?auto=compress&cs=tinysrgb&w=200'},
+    {cat:'Katmerler', name:'Lavaş', price:null, img:'https://images.pexels.com/photos/37290088/pexels-photo-37290088.jpeg?auto=compress&cs=tinysrgb&w=200'}
   ];
   const qty = {};
   MENU.forEach(m => qty[m.name] = 0);
 
   function render() {
-    const root = document.getElementById('productGrids');
+    const root = document.getElementById('productRows');
     const cats = [...new Set(MENU.map(m=>m.cat))];
     root.innerHTML = cats.map(cat => `
-      <div class="mb-10">
-        <p class="text-[10px] tracking-[0.35em] uppercase text-clay mb-4">${cat}</p>
-        <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4">
+      <div class="mb-6">
+        <p class="text-[10px] tracking-[0.35em] uppercase text-clay mb-2">${cat}</p>
+        <div class="bg-white rounded-2xl border border-ink/10 overflow-hidden divide-y divide-ink/10">
           ${MENU.filter(m=>m.cat===cat).map(m => `
-            <div class="product-card aspect-square min-h-[150px] rounded-2xl overflow-hidden relative border border-ink/10 bg-soot">
-              <img src="${m.img}" alt="${m.name}" class="absolute inset-0 w-full h-full object-cover" loading="eager" onerror="this.style.display='none'" />
-              <div class="absolute inset-0 bg-gradient-to-t from-ink/90 via-ink/30 to-transparent"></div>
-              <div class="absolute top-2 right-2 bg-paper/90 text-ink text-xs font-medium px-2 py-0.5 rounded-full">${m.price ? m.price + ' ₺' : 'Fiyat sorunuz'}</div>
-              <div class="absolute bottom-0 left-0 right-0 p-3 text-center text-paper">
-                <h3 class="display text-sm leading-tight">${m.name}</h3>
-                <div class="flex items-center justify-center gap-2 mt-2">
-                  <button type="button" onclick="chg('${m.name}',-1)" class="w-7 h-7 rounded-full bg-paper/20 hover:bg-paper/30 flex items-center justify-center text-paper">−</button>
-                  <span id="q_${m.name}" class="w-6 text-center text-sm font-medium">${qty[m.name]}</span>
-                  <button type="button" onclick="chg('${m.name}',1)" class="w-7 h-7 rounded-full bg-clay text-paper hover:bg-[#9f4e2f] flex items-center justify-center">+</button>
-                </div>
+            <div class="product-row flex items-center gap-3 p-3">
+              <img src="${m.img}" alt="${m.name}" class="w-14 h-14 rounded-xl object-cover shrink-0 bg-soot" loading="eager" onerror="this.style.display='none'" />
+              <div class="flex-1 min-w-0">
+                <p class="text-sm font-medium text-ink truncate">${m.name}</p>
+                <p class="text-xs text-ink/50">${m.price ? m.price + ' ₺' : 'Fiyat sorunuz'}</p>
+              </div>
+              <div class="flex items-center gap-2 shrink-0">
+                <button type="button" onclick="chg('${m.name}',-1)" class="w-9 h-9 rounded-full bg-ink/5 hover:bg-ink/10 flex items-center justify-center text-ink text-lg">−</button>
+                <span id="q_${m.name}" class="w-7 text-center text-sm font-medium">${qty[m.name]}</span>
+                <button type="button" onclick="chg('${m.name}',1)" class="w-9 h-9 rounded-full bg-clay text-paper hover:bg-[#9f4e2f] flex items-center justify-center text-lg">+</button>
               </div>
             </div>
           `).join('')}
         </div>
       </div>
     `).join('');
-    updateTotal();
+    updateBar();
   }
 
   function chg(name, d) {
     qty[name] = Math.max(0, (qty[name]||0) + d);
     const el = document.getElementById('q_' + name);
     if (el) el.textContent = qty[name];
-    updateTotal();
+    updateBar();
   }
 
-  function updateTotal() {
-    let total = 0;
-    MENU.forEach(m => { if (m.price && qty[m.name]) total += m.price * qty[m.name]; });
-    document.getElementById('orderTotal').textContent = total ? total + ' ₺' : '0 ₺';
-    const summary = document.getElementById('orderSummary');
-    const lines = MENU.filter(m=>qty[m.name]>0).map(m => `• ${m.name} x${qty[m.name]}${m.price ? ' — ' + (m.price*qty[m.name]) + ' ₺' : ''}`);
-    summary.innerHTML = lines.length ? lines.map(l=>'<div>'+l+'</div>').join('') : '<div class="text-ink/40">Henüz ürün seçmediniz.</div>';
+  function updateBar() {
+    let total = 0, count = 0;
+    MENU.forEach(m => { if (qty[m.name]) { count += qty[m.name]; if (m.price) total += m.price * qty[m.name]; } });
+    const bar = document.getElementById('bottomBar');
+    if (count > 0) {
+      bar.classList.remove('hidden');
+      document.getElementById('barTotal').textContent = total ? total + ' ₺' : 'Fiyat sorunuz';
+      document.getElementById('barCount').textContent = count + ' ürün seçildi';
+    } else {
+      bar.classList.add('hidden');
+    }
   }
 
   function clearOrder() {
