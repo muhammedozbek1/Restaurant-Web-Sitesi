@@ -84,24 +84,24 @@ tailwind.config = { theme: { extend: {
 
 <script>
   const MENU = [
-    {cat:'Lahmacunlar', name:'Lahmacun', price:80, img:'https://images.pexels.com/photos/24427085/pexels-photo-24427085.jpeg?auto=compress&cs=tinysrgb&w=200'},
-    {cat:'Lahmacunlar', name:'Malatya Lahmacun', price:150, img:'https://images.pexels.com/photos/7545570/pexels-photo-7545570.jpeg?auto=compress&cs=tinysrgb&w=200'},
-    {cat:'Pideler', name:'Kıymalı Pide', price:150, img:'https://images.pexels.com/photos/5639357/pexels-photo-5639357.jpeg?auto=compress&cs=tinysrgb&w=200'},
-    {cat:'Pideler', name:'Kıymalı Kaşarlı Pide', price:200, img:'https://images.pexels.com/photos/37290083/pexels-photo-37290083.jpeg?auto=compress&cs=tinysrgb&w=200'},
-    {cat:'Pideler', name:'Kavurmalı Pide', price:220, img:'https://images.pexels.com/photos/5639357/pexels-photo-5639357.jpeg?auto=compress&cs=tinysrgb&w=200'},
-    {cat:'Pideler', name:'Kavurmalı Kaşarlı Pide', price:225, img:'https://images.pexels.com/photos/37290083/pexels-photo-37290083.jpeg?auto=compress&cs=tinysrgb&w=200'},
-    {cat:'Pideler', name:'Kavurmalı Yumurtalı Pide', price:225, img:'https://images.pexels.com/photos/37290083/pexels-photo-37290083.jpeg?auto=compress&cs=tinysrgb&w=200'},
-    {cat:'Pideler', name:'Karışık Pide', price:225, img:'https://images.pexels.com/photos/5639357/pexels-photo-5639357.jpeg?auto=compress&cs=tinysrgb&w=200'},
-    {cat:'Pideler', name:'Kaşarlı Pide', price:175, img:'https://images.pexels.com/photos/37290083/pexels-photo-37290083.jpeg?auto=compress&cs=tinysrgb&w=200'},
-    {cat:'Pideler', name:'Kaşarlı Sucuklu Pide', price:200, img:'https://images.pexels.com/photos/5639357/pexels-photo-5639357.jpeg?auto=compress&cs=tinysrgb&w=200'},
-    {cat:'Pideler', name:'Sucuklu Yumurtalı Pide', price:150, img:'https://images.pexels.com/photos/5639357/pexels-photo-5639357.jpeg?auto=compress&cs=tinysrgb&w=200'},
-    {cat:'Katmerler', name:'Kıymalı Katmer', price:30, img:'https://images.pexels.com/photos/37290080/pexels-photo-37290080.jpeg?auto=compress&cs=tinysrgb&w=200'},
-    {cat:'Katmerler', name:'Sucuklu Katmer', price:30, img:'https://images.pexels.com/photos/37290080/pexels-photo-37290080.jpeg?auto=compress&cs=tinysrgb&w=200'},
-    {cat:'Katmerler', name:'Peynirli Katmer', price:30, img:'https://images.pexels.com/photos/37290080/pexels-photo-37290080.jpeg?auto=compress&cs=tinysrgb&w=200'},
-    {cat:'Katmerler', name:'Patatesli Katmer', price:30, img:'https://images.pexels.com/photos/37290080/pexels-photo-37290080.jpeg?auto=compress&cs=tinysrgb&w=200'},
-    {cat:'Katmerler', name:'Yağlı Katmer', price:25, img:'https://images.pexels.com/photos/37290080/pexels-photo-37290080.jpeg?auto=compress&cs=tinysrgb&w=200'},
-    {cat:'Katmerler', name:'Tırnaklı / Evcil Pide', price:20, img:'https://images.pexels.com/photos/37290088/pexels-photo-37290088.jpeg?auto=compress&cs=tinysrgb&w=200'},
-    {cat:'Katmerler', name:'Lavaş', price:20, img:'https://images.pexels.com/photos/37290088/pexels-photo-37290088.jpeg?auto=compress&cs=tinysrgb&w=200'}
+    {cat:'Lahmacunlar', name:'Lahmacun', price:80, note:'İnce hamur üzerinde baharatlı kıyma, fırından çıtır.', img:'https://images.pexels.com/photos/24427085/pexels-photo-24427085.jpeg?auto=compress&cs=tinysrgb&w=200'},
+    {cat:'Lahmacunlar', name:'Malatya Lahmacun', price:150, note:'Malatya usulü, bol kıymalı ve ince hamurlu.', img:'https://images.pexels.com/photos/7545570/pexels-photo-7545570.jpeg?auto=compress&cs=tinysrgb&w=200'},
+    {cat:'Pideler', name:'Kıymalı Pide', price:150, note:'Taş fırından, kıymalı klasik pide.', img:'https://images.pexels.com/photos/5639357/pexels-photo-5639357.jpeg?auto=compress&cs=tinysrgb&w=200'},
+    {cat:'Pideler', name:'Kıymalı Kaşarlı Pide', price:200, note:'Kıyma ve erimiş kaşarın buluşması.', img:'https://images.pexels.com/photos/37290083/pexels-photo-37290083.jpeg?auto=compress&cs=tinysrgb&w=200'},
+    {cat:'Pideler', name:'Kavurmalı Pide', price:220, note:'Kavurma ile zenginleştirilmiş şef önerisi.', img:'https://images.pexels.com/photos/5639357/pexels-photo-5639357.jpeg?auto=compress&cs=tinysrgb&w=200'},
+    {cat:'Pideler', name:'Kavurmalı Kaşarlı Pide', price:225, note:'Kavurma ve kaşarın bolca birleşimi.', img:'https://images.pexels.com/photos/37290083/pexels-photo-37290083.jpeg?auto=compress&cs=tinysrgb&w=200'},
+    {cat:'Pideler', name:'Kavurmalı Yumurtalı Pide', price:225, note:'Kavurma ve yumurta ile doyurucu.', img:'https://images.pexels.com/photos/37290083/pexels-photo-37290083.jpeg?auto=compress&cs=tinysrgb&w=200'},
+    {cat:'Pideler', name:'Karışık Pide', price:225, note:'Bir arada, karışık lezzetler.', img:'https://images.pexels.com/photos/5639357/pexels-photo-5639357.jpeg?auto=compress&cs=tinysrgb&w=200'},
+    {cat:'Pideler', name:'Kaşarlı Pide', price:175, note:'Sadece kaşarlı, vejetaryen seçenek.', img:'https://images.pexels.com/photos/37290083/pexels-photo-37290083.jpeg?auto=compress&cs=tinysrgb&w=200'},
+    {cat:'Pideler', name:'Kaşarlı Sucuklu Pide', price:200, note:'Sucuk ve kaşarın uyumu.', img:'https://images.pexels.com/photos/5639357/pexels-photo-5639357.jpeg?auto=compress&cs=tinysrgb&w=200'},
+    {cat:'Pideler', name:'Sucuklu Yumurtalı Pide', price:150, note:'Sucuk ve yumurta ile kahvaltı tadı.', img:'https://images.pexels.com/photos/5639357/pexels-photo-5639357.jpeg?auto=compress&cs=tinysrgb&w=200'},
+    {cat:'Katmerler', name:'Kıymalı Katmer', price:30, note:'Kıymalı, tok tutan katmer.', img:'https://images.pexels.com/photos/37290080/pexels-photo-37290080.jpeg?auto=compress&cs=tinysrgb&w=200'},
+    {cat:'Katmerler', name:'Sucuklu Katmer', price:30, note:'Sucuklu, doyurucu katmer.', img:'https://images.pexels.com/photos/37290080/pexels-photo-37290080.jpeg?auto=compress&cs=tinysrgb&w=200'},
+    {cat:'Katmerler', name:'Peynirli Katmer', price:30, note:'Peynirli, hafif ve lezzetli.', img:'https://images.pexels.com/photos/37290080/pexels-photo-37290080.jpeg?auto=compress&cs=tinysrgb&w=200'},
+    {cat:'Katmerler', name:'Patatesli Katmer', price:30, note:'Patatesli, doyurucu katmer.', img:'https://images.pexels.com/photos/37290080/pexels-photo-37290080.jpeg?auto=compress&cs=tinysrgb&w=200'},
+    {cat:'Katmerler', name:'Yağlı Katmer', price:25, note:'Sade, yağlı çıtır katmer.', img:'https://images.pexels.com/photos/37290080/pexels-photo-37290080.jpeg?auto=compress&cs=tinysrgb&w=200'},
+    {cat:'Katmerler', name:'Tırnaklı / Evcil Pide', price:20, note:'Geleneksel tırnaklı ekmek.', img:'https://images.pexels.com/photos/37290088/pexels-photo-37290088.jpeg?auto=compress&cs=tinysrgb&w=200'},
+    {cat:'Katmerler', name:'Lavaş', price:20, note:'Sıcak, taze lavaş.', img:'https://images.pexels.com/photos/37290088/pexels-photo-37290088.jpeg?auto=compress&cs=tinysrgb&w=200'}
   ];
   const qty = {};
   MENU.forEach(m => qty[m.name] = 0);
@@ -119,6 +119,7 @@ tailwind.config = { theme: { extend: {
               <div class="flex-1 min-w-0">
                 <p class="text-sm font-medium text-ink truncate">${m.name}</p>
                 <p class="text-xs text-ink/50">${m.price ? m.price + ' ₺' : 'Fiyat sorunuz'}</p>
+                <p class="text-[11px] text-ink/40 leading-tight mt-0.5">${m.note}</p>
               </div>
               <div class="flex items-center gap-2 shrink-0">
                 <button type="button" onclick="chg('${m.name}',-1)" class="w-9 h-9 rounded-full bg-ink/5 hover:bg-ink/10 flex items-center justify-center text-ink text-lg">−</button>
