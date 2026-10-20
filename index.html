@@ -72,7 +72,7 @@ tailwind.config = { theme: { extend: {
       <a href="#iletisim" class="hover:text-clay">İletişim</a>
       <a href="#konum" class="hover:text-clay">Konum</a>
     </nav>
-    <button type="button" onclick="openOrder()" class="bg-ink text-paper px-5 py-2.5 rounded-full text-xs tracking-[0.2em] uppercase hover:bg-soot">Sipariş</button>
+    <a href="siparis.html" class="bg-ink text-paper px-5 py-2.5 rounded-full text-xs tracking-[0.2em] uppercase hover:bg-soot">Sipariş</a>
     <a href="tel:+902124330140" class="btn-clay px-5 py-2.5 rounded-full text-xs tracking-[0.2em] uppercase">Ara</a>
   </div>
 </header>
@@ -138,56 +138,150 @@ tailwind.config = { theme: { extend: {
     <h2 class="display text-4xl md:text-6xl text-center mt-3">Sade ve Lezzetli</h2>
     <p class="text-sm text-paper/60 text-center mt-4 max-w-[560px] mx-auto">Fiyatlar dönemsel değişebilir. Güncel fiyat için lütfen <a href="tel:+902124330140" class="underline text-gold">0212 433 01 40</a> numaralı telefonu arayın.</p>
 
-    <div class="grid md:grid-cols-3 gap-6 mt-14">
-      <!-- Lahmacun -->
-      <div class="menu-card bg-soot rounded-2xl p-8 border border-paper/5">
-        <p class="text-[10px] tracking-[0.35em] uppercase text-paper/40">Fırından</p>
-        <h3 class="display text-2xl mt-2 text-paper">Lahmacunlar</h3>
-        <div class="divider mt-4 mb-5"></div>
-        <ul class="space-y-4 text-[15px]">
-          <li class="flex justify-between gap-3"><span>Lahmacun</span><span class="text-paper/40 text-sm">klasik · 80 ₺</span></li>
-          <li class="flex justify-between gap-3"><span>Evcil Lahmacun <span class="text-paper/40 text-xs">(K / B)</span></span><span class="text-gold text-sm">★</span></li>
-          <li class="flex justify-between gap-3"><span>Malatya Lahmacun</span><span class="text-paper/40 text-sm">yöresel · 150 ₺</span></li>
-          <li class="flex justify-between gap-3"><span>Hatay Biberli Ekmek</span><span class="text-paper/40 text-sm">acılı</span></li>
-        </ul>
+    <!-- Lahmacunlar -->
+    <div class="mt-14">
+      <p class="text-[10px] tracking-[0.35em] uppercase text-paper/40 mb-4">Lahmacunlar</p>
+      <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4">
+        <div class="aspect-square rounded-2xl bg-soot border border-paper/10 p-4 flex flex-col items-center justify-center text-center hover:border-clay transition">
+          <span class="text-3xl mb-2">🔥</span>
+          <h3 class="display text-base leading-tight">Lahmacun</h3>
+          <p class="text-xs text-paper/50 mt-1">klasik</p>
+          <p class="text-clay font-medium mt-2">80 ₺</p>
+        </div>
+        <div class="aspect-square rounded-2xl bg-soot border border-paper/10 p-4 flex flex-col items-center justify-center text-center hover:border-clay transition">
+          <span class="text-3xl mb-2">🫓</span>
+          <h3 class="display text-base leading-tight">Evcil Lahmacun</h3>
+          <p class="text-xs text-paper/50 mt-1">Küçük / Büyük</p>
+          <p class="text-paper/40 text-xs mt-2">Fiyat sorunuz</p>
+        </div>
+        <div class="aspect-square rounded-2xl bg-soot border border-paper/10 p-4 flex flex-col items-center justify-center text-center hover:border-clay transition">
+          <span class="text-3xl mb-2">🌶️</span>
+          <h3 class="display text-base leading-tight">Malatya Lahmacun</h3>
+          <p class="text-xs text-paper/50 mt-1">yöresel</p>
+          <p class="text-clay font-medium mt-2">150 ₺</p>
+        </div>
+        <div class="aspect-square rounded-2xl bg-soot border border-paper/10 p-4 flex flex-col items-center justify-center text-center hover:border-clay transition">
+          <span class="text-3xl mb-2">🌶️</span>
+          <h3 class="display text-base leading-tight">Hatay Biberli Ekmek</h3>
+          <p class="text-xs text-paper/50 mt-1">acılı</p>
+          <p class="text-paper/40 text-xs mt-2">Fiyat sorunuz</p>
+        </div>
       </div>
-      <!-- Pide -->
-      <div class="menu-card bg-clay text-paper rounded-2xl p-8 shadow-2xl relative overflow-hidden">
-        <div class="absolute -top-10 -right-10 w-40 h-40 rounded-full bg-ember/30 blur-2xl"></div>
-        <p class="text-[10px] tracking-[0.35em] uppercase text-paper/70">En Sevilenler</p>
-        <h3 class="display text-2xl mt-2">Pideler</h3>
-        <div class="divider bg-paper/30 mt-4 mb-5"></div>
-        <ul class="space-y-3 text-[15px]">
-          <li class="flex justify-between gap-3 border-b border-paper/15 pb-2"><span>Kıymalı Pide</span><span class="text-paper/60 text-sm">klasik · 150 ₺</span></li>
-          <li class="flex justify-between gap-3 border-b border-paper/15 pb-2"><span>Kıymalı Kaşarlı Pide</span><span class="text-paper/60 text-sm">popüler · 200 ₺</span></li>
-          <li class="flex justify-between gap-3 border-b border-paper/15 pb-2"><span>Kavurmalı Pide</span><span class="text-gold text-sm">★ şef önerisi</span></li>
-          <li class="flex justify-between gap-3 border-b border-paper/15 pb-2"><span>Kavurmalı Kaşarlı Pide</span><span class="text-paper/60 text-sm">bol kaşarlı · 225 ₺</span></li>
-          <li class="flex justify-between gap-3 border-b border-paper/15 pb-2"><span>Kavurmalı Yumurtalı Pide</span><span class="text-paper/60 text-sm">yumurtalı · 225 ₺</span></li>
-          <li class="flex justify-between gap-3 border-b border-paper/15 pb-2"><span>Karışık Pide</span><span class="text-paper/60 text-sm">karışık · 225 ₺</span></li>
-          <li class="flex justify-between gap-3 border-b border-paper/15 pb-2"><span>Kaşarlı Pide</span><span class="text-paper/60 text-sm">vejetaryen · 175 ₺</span></li>
-          <li class="flex justify-between gap-3 border-b border-paper/15 pb-2"><span>Kaşarlı Sucuklu Pide</span><span class="text-paper/60 text-sm">sucuklu · 200 ₺</span></li>
-          <li class="flex justify-between gap-3"><span>Sucuklu Yumurtalı Pide</span><span class="text-paper/60 text-sm">sucuklu · 150 ₺</span></li>
-        </ul>
+    </div>
+
+    <!-- Pideler -->
+    <div class="mt-12">
+      <p class="text-[10px] tracking-[0.35em] uppercase text-paper/40 mb-4">Pideler</p>
+      <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4">
+        <div class="aspect-square rounded-2xl bg-clay border border-paper/10 p-4 flex flex-col items-center justify-center text-center shadow-lg">
+          <span class="text-3xl mb-2">🥩</span>
+          <h3 class="display text-base leading-tight">Kıymalı Pide</h3>
+          <p class="text-xs text-paper/70 mt-1">klasik</p>
+          <p class="text-paper font-medium mt-2">150 ₺</p>
+        </div>
+        <div class="aspect-square rounded-2xl bg-clay border border-paper/10 p-4 flex flex-col items-center justify-center text-center shadow-lg">
+          <span class="text-3xl mb-2">🧀</span>
+          <h3 class="display text-base leading-tight">Kıymalı Kaşarlı Pide</h3>
+          <p class="text-xs text-paper/70 mt-1">popüler</p>
+          <p class="text-paper font-medium mt-2">200 ₺</p>
+        </div>
+        <div class="aspect-square rounded-2xl bg-clay border border-paper/10 p-4 flex flex-col items-center justify-center text-center shadow-lg">
+          <span class="text-3xl mb-2">🥩</span>
+          <h3 class="display text-base leading-tight">Kavurmalı Pide</h3>
+          <p class="text-xs text-paper/70 mt-1">şef önerisi</p>
+          <p class="text-paper/70 text-xs mt-2">Fiyat sorunuz</p>
+        </div>
+        <div class="aspect-square rounded-2xl bg-clay border border-paper/10 p-4 flex flex-col items-center justify-center text-center shadow-lg">
+          <span class="text-3xl mb-2">🧀</span>
+          <h3 class="display text-base leading-tight">Kavurmalı Kaşarlı Pide</h3>
+          <p class="text-xs text-paper/70 mt-1">bol kaşarlı</p>
+          <p class="text-paper font-medium mt-2">225 ₺</p>
+        </div>
+        <div class="aspect-square rounded-2xl bg-clay border border-paper/10 p-4 flex flex-col items-center justify-center text-center shadow-lg">
+          <span class="text-3xl mb-2">🥚</span>
+          <h3 class="display text-base leading-tight">Kavurmalı Yumurtalı Pide</h3>
+          <p class="text-xs text-paper/70 mt-1">yumurtalı</p>
+          <p class="text-paper font-medium mt-2">225 ₺</p>
+        </div>
+        <div class="aspect-square rounded-2xl bg-clay border border-paper/10 p-4 flex flex-col items-center justify-center text-center shadow-lg">
+          <span class="text-3xl mb-2">🍕</span>
+          <h3 class="display text-base leading-tight">Karışık Pide</h3>
+          <p class="text-xs text-paper/70 mt-1">karışık</p>
+          <p class="text-paper font-medium mt-2">225 ₺</p>
+        </div>
+        <div class="aspect-square rounded-2xl bg-clay border border-paper/10 p-4 flex flex-col items-center justify-center text-center shadow-lg">
+          <span class="text-3xl mb-2">🧀</span>
+          <h3 class="display text-base leading-tight">Kaşarlı Pide</h3>
+          <p class="text-xs text-paper/70 mt-1">vejetaryen</p>
+          <p class="text-paper font-medium mt-2">175 ₺</p>
+        </div>
+        <div class="aspect-square rounded-2xl bg-clay border border-paper/10 p-4 flex flex-col items-center justify-center text-center shadow-lg">
+          <span class="text-3xl mb-2">🌭</span>
+          <h3 class="display text-base leading-tight">Kaşarlı Sucuklu Pide</h3>
+          <p class="text-xs text-paper/70 mt-1">sucuklu</p>
+          <p class="text-paper font-medium mt-2">200 ₺</p>
+        </div>
+        <div class="aspect-square rounded-2xl bg-clay border border-paper/10 p-4 flex flex-col items-center justify-center text-center shadow-lg">
+          <span class="text-3xl mb-2">🍳</span>
+          <h3 class="display text-base leading-tight">Sucuklu Yumurtalı Pide</h3>
+          <p class="text-xs text-paper/70 mt-1">sucuklu</p>
+          <p class="text-paper font-medium mt-2">150 ₺</p>
+        </div>
       </div>
-      <!-- Katmer -->
-      <div class="menu-card bg-soot rounded-2xl p-8 border border-paper/5">
-        <p class="text-[10px] tracking-[0.35em] uppercase text-paper/40">Katmer & Ekmek</p>
-        <h3 class="display text-2xl mt-2 text-paper">Katmerler</h3>
-        <div class="divider mt-4 mb-5"></div>
-        <ul class="space-y-4 text-[15px]">
-          <li class="flex justify-between gap-3"><span>Kıymalı Katmer</span><span class="text-paper/40 text-sm">tok tutar</span></li>
-          <li class="flex justify-between gap-3"><span>Sucuklu Katmer</span><span class="text-paper/40 text-sm">sucuklu</span></li>
-          <li class="flex justify-between gap-3"><span>Peynirli Katmer</span><span class="text-paper/40 text-sm">peynirli</span></li>
-          <li class="flex justify-between gap-3"><span>Patatesli Katmer</span><span class="text-paper/40 text-sm">patatesli</span></li>
-          <li class="flex justify-between gap-3"><span>Yağlı Katmer</span><span class="text-paper/40 text-sm">sade</span></li>
-          <li class="flex justify-between gap-3"><span>Tırnaklı / Evcil Pide</span><span class="text-paper/40 text-sm">ekmek</span></li>
-          <li class="flex justify-between gap-3"><span>Lavaş</span><span class="text-paper/40 text-sm">sıcak</span></li>
-        </ul>
+    </div>
+
+    <!-- Katmerler -->
+    <div class="mt-12">
+      <p class="text-[10px] tracking-[0.35em] uppercase text-paper/40 mb-4">Katmer & Ekmek</p>
+      <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4">
+        <div class="aspect-square rounded-2xl bg-soot border border-paper/10 p-4 flex flex-col items-center justify-center text-center hover:border-clay transition">
+          <span class="text-3xl mb-2">🥟</span>
+          <h3 class="display text-base leading-tight">Kıymalı Katmer</h3>
+          <p class="text-xs text-paper/50 mt-1">tok tutar</p>
+          <p class="text-paper/40 text-xs mt-2">Fiyat sorunuz</p>
+        </div>
+        <div class="aspect-square rounded-2xl bg-soot border border-paper/10 p-4 flex flex-col items-center justify-center text-center hover:border-clay transition">
+          <span class="text-3xl mb-2">🌭</span>
+          <h3 class="display text-base leading-tight">Sucuklu Katmer</h3>
+          <p class="text-xs text-paper/50 mt-1">sucuklu</p>
+          <p class="text-paper/40 text-xs mt-2">Fiyat sorunuz</p>
+        </div>
+        <div class="aspect-square rounded-2xl bg-soot border border-paper/10 p-4 flex flex-col items-center justify-center text-center hover:border-clay transition">
+          <span class="text-3xl mb-2">🧀</span>
+          <h3 class="display text-base leading-tight">Peynirli Katmer</h3>
+          <p class="text-xs text-paper/50 mt-1">peynirli</p>
+          <p class="text-paper/40 text-xs mt-2">Fiyat sorunuz</p>
+        </div>
+        <div class="aspect-square rounded-2xl bg-soot border border-paper/10 p-4 flex flex-col items-center justify-center text-center hover:border-clay transition">
+          <span class="text-3xl mb-2">🥔</span>
+          <h3 class="display text-base leading-tight">Patatesli Katmer</h3>
+          <p class="text-xs text-paper/50 mt-1">patatesli</p>
+          <p class="text-paper/40 text-xs mt-2">Fiyat sorunuz</p>
+        </div>
+        <div class="aspect-square rounded-2xl bg-soot border border-paper/10 p-4 flex flex-col items-center justify-center text-center hover:border-clay transition">
+          <span class="text-3xl mb-2">🧈</span>
+          <h3 class="display text-base leading-tight">Yağlı Katmer</h3>
+          <p class="text-xs text-paper/50 mt-1">sade</p>
+          <p class="text-paper/40 text-xs mt-2">Fiyat sorunuz</p>
+        </div>
+        <div class="aspect-square rounded-2xl bg-soot border border-paper/10 p-4 flex flex-col items-center justify-center text-center hover:border-clay transition">
+          <span class="text-3xl mb-2">🫓</span>
+          <h3 class="display text-base leading-tight">Tırnaklı / Evcil Pide</h3>
+          <p class="text-xs text-paper/50 mt-1">ekmek</p>
+          <p class="text-paper/40 text-xs mt-2">Fiyat sorunuz</p>
+        </div>
+        <div class="aspect-square rounded-2xl bg-soot border border-paper/10 p-4 flex flex-col items-center justify-center text-center hover:border-clay transition">
+          <span class="text-3xl mb-2">🫓</span>
+          <h3 class="display text-base leading-tight">Lavaş</h3>
+          <p class="text-xs text-paper/50 mt-1">sıcak</p>
+          <p class="text-paper/40 text-xs mt-2">Fiyat sorunuz</p>
+        </div>
       </div>
     </div>
 
     <div class="flex flex-wrap justify-center gap-3 mt-12">
-      <a href="tel:+902124330140" class="btn-clay px-8 py-3.5 rounded-full text-xs tracking-[0.2em] uppercase shadow-lg">Telefonla Sipariş: 0212 433 01 40</a>
+      <a href="siparis.html" class="btn-clay px-8 py-3.5 rounded-full text-xs tracking-[0.2em] uppercase shadow-lg">Sipariş Sayfasına Git</a>
+      <a href="tel:+902124330140" class="border border-paper/30 text-paper px-8 py-3.5 rounded-full text-xs tracking-[0.2em] uppercase hover:bg-paper hover:text-ink">Telefonla Sipariş: 0212 433 01 40</a>
       <a href="https://wa.me/902124330140?text=Merhaba%2C%20sipari%C5%9F%20vermek%20istiyorum" target="_blank" rel="noopener" class="bg-[#25D366] text-white px-8 py-3.5 rounded-full text-xs tracking-[0.2em] uppercase hover:brightness-95">WhatsApp'tan Sipariş</a>
     </div>
   </div>
@@ -280,138 +374,6 @@ tailwind.config = { theme: { extend: {
     entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('in'); });
   }, { threshold: 0.15 });
   document.querySelectorAll('.reveal').forEach(el => io.observe(el));
-</script>
-<!-- Sipariş Modalı -->
-<div id="orderModal" class="fixed inset-0 z-[60] hidden bg-ink/70 backdrop-blur-sm flex items-center justify-center p-4">
-  <div class="bg-paper rounded-3xl w-full max-w-lg max-h-[92vh] overflow-hidden flex flex-col shadow-2xl border border-ink/10">
-    <div class="flex items-center justify-between px-6 py-4 border-b border-ink/10">
-      <div>
-        <p class="text-[10px] tracking-[0.35em] uppercase text-clay">Sipariş</p>
-        <h2 class="display text-2xl mt-0.5">Siparişinizi Seçin</h2>
-      </div>
-      <button type="button" onclick="closeOrder()" class="w-9 h-9 rounded-full bg-ink/5 hover:bg-ink/10 flex items-center justify-center text-ink/70" aria-label="Kapat">✕</button>
-    </div>
-    <div id="orderList" class="overflow-y-auto px-6 py-4 space-y-5 flex-1"></div>
-    <div class="px-6 py-4 border-t border-ink/10 bg-paper">
-      <div class="flex items-center justify-between mb-3">
-        <span class="text-sm text-ink/60">Toplam</span>
-        <span id="orderTotal" class="display text-xl text-clay">0 ₺</span>
-      </div>
-      <div class="grid grid-cols-2 gap-3 mb-3">
-        <input id="custName" type="text" placeholder="Ad Soyad" class="px-3 py-2.5 rounded-xl border border-ink/15 bg-white text-sm focus:outline-none focus:border-clay" />
-        <input id="custPhone" type="tel" placeholder="Telefon" class="px-3 py-2.5 rounded-xl border border-ink/15 bg-white text-sm focus:outline-none focus:border-clay" />
-      </div>
-      <input id="custAddress" type="text" placeholder="Adres / Teslimat notu" class="w-full px-3 py-2.5 rounded-xl border border-ink/15 bg-white text-sm focus:outline-none focus:border-clay mb-3" />
-      <textarea id="custNote" rows="2" placeholder="Ek not (isteğe bağlı)" class="w-full px-3 py-2.5 rounded-xl border border-ink/15 bg-white text-sm focus:outline-none focus:border-clay mb-3"></textarea>
-      <div class="flex gap-2">
-        <button type="button" onclick="sendOrder()" class="flex-1 btn-clay px-5 py-3 rounded-full text-xs tracking-[0.2em] uppercase shadow-lg">WhatsApp'a Gönder</button>
-        <button type="button" onclick="clearOrder()" class="px-5 py-3 rounded-full border border-ink/20 text-xs tracking-[0.2em] uppercase hover:border-clay hover:text-clay">Temizle</button>
-      </div>
-      <p class="text-[10px] text-ink/40 mt-2 text-center">Fiyatı olmayan ürünler için lütfen arayın: 0212 433 01 40</p>
-    </div>
-  </div>
-</div>
-
-<script>
-  const MENU = [
-    {cat:'Lahmacunlar', name:'Lahmacun', price:80},
-    {cat:'Lahmacunlar', name:'Evcil Lahmacun (K / B)', price:null},
-    {cat:'Lahmacunlar', name:'Malatya Lahmacun', price:150},
-    {cat:'Lahmacunlar', name:'Hatay Biberli Ekmek', price:null},
-    {cat:'Pideler', name:'Kıymalı Pide', price:150},
-    {cat:'Pideler', name:'Kıymalı Kaşarlı Pide', price:200},
-    {cat:'Pideler', name:'Kavurmalı Pide', price:null},
-    {cat:'Pideler', name:'Kavurmalı Kaşarlı Pide', price:225},
-    {cat:'Pideler', name:'Kavurmalı Yumurtalı Pide', price:225},
-    {cat:'Pideler', name:'Karışık Pide', price:225},
-    {cat:'Pideler', name:'Kaşarlı Pide', price:175},
-    {cat:'Pideler', name:'Kaşarlı Sucuklu Pide', price:200},
-    {cat:'Pideler', name:'Sucuklu Yumurtalı Pide', price:150},
-    {cat:'Katmerler', name:'Kıymalı Katmer', price:null},
-    {cat:'Katmerler', name:'Sucuklu Katmer', price:null},
-    {cat:'Katmerler', name:'Peynirli Katmer', price:null},
-    {cat:'Katmerler', name:'Patatesli Katmer', price:null},
-    {cat:'Katmerler', name:'Yağlı Katmer', price:null},
-    {cat:'Katmerler', name:'Tırnaklı / Evcil Pide', price:null},
-    {cat:'Katmerler', name:'Lavaş', price:null}
-  ];
-  const qty = {};
-  MENU.forEach(m => qty[m.name] = 0);
-
-  function renderOrder() {
-    const root = document.getElementById('orderList');
-    const cats = [...new Set(MENU.map(m=>m.cat))];
-    root.innerHTML = cats.map(cat => `
-      <div>
-        <p class="text-[10px] tracking-[0.35em] uppercase text-clay mb-2">${cat}</p>
-        <div class="space-y-2">
-          ${MENU.filter(m=>m.cat===cat).map(m => `
-            <div class="flex items-center justify-between gap-3 bg-white rounded-xl px-4 py-3 border border-ink/10">
-              <div class="min-w-0">
-                <p class="text-sm font-medium text-ink truncate">${m.name}</p>
-                <p class="text-xs text-ink/50">${m.price ? m.price + ' ₺' : 'Fiyat için arayın'}</p>
-              </div>
-              <div class="flex items-center gap-2 shrink-0">
-                <button type="button" onclick="chg('${m.name}',-1)" class="w-8 h-8 rounded-full bg-ink/5 hover:bg-ink/10 flex items-center justify-center text-ink">−</button>
-                <span id="q_${CSS.escape(m.name)}" class="w-6 text-center text-sm font-medium">${qty[m.name]}</span>
-                <button type="button" onclick="chg('${m.name}',1)" class="w-8 h-8 rounded-full bg-clay text-paper hover:bg-[#9f4e2f] flex items-center justify-center">+</button>
-              </div>
-            </div>
-          `).join('')}
-        </div>
-      </div>
-    `).join('');
-    updateTotal();
-  }
-
-  function chg(name, d) {
-    qty[name] = Math.max(0, (qty[name]||0) + d);
-    const el = document.getElementById('q_' + CSS.escape(name));
-    if (el) el.textContent = qty[name];
-    updateTotal();
-  }
-
-  function updateTotal() {
-    let total = 0;
-    MENU.forEach(m => { if (m.price && qty[m.name]) total += m.price * qty[m.name]; });
-    document.getElementById('orderTotal').textContent = total ? total + ' ₺' : '0 ₺';
-  }
-
-  function openOrder() {
-    document.getElementById('orderModal').classList.remove('hidden');
-    document.body.style.overflow = 'hidden';
-  }
-  function closeOrder() {
-    document.getElementById('orderModal').classList.add('hidden');
-    document.body.style.overflow = '';
-  }
-  function clearOrder() {
-    MENU.forEach(m => qty[m.name]=0);
-    renderOrder();
-  }
-  function sendOrder() {
-    const lines = MENU.filter(m=>qty[m.name]>0).map(m => `• ${m.name} x${qty[m.name]}${m.price ? ' — ' + (m.price*qty[m.name]) + ' ₺' : ''}`);
-    if (!lines.length) { alert('Lütfen en az bir ürün seçin.'); return; }
-    const total = MENU.reduce((s,m)=> s + (m.price && qty[m.name] ? m.price*qty[m.name] : 0), 0);
-    const name = document.getElementById('custName').value.trim();
-    const phone = document.getElementById('custPhone').value.trim();
-    const address = document.getElementById('custAddress').value.trim();
-    const note = document.getElementById('custNote').value.trim();
-    let msg = 'Merhaba, sipariş vermek istiyorum:\n\n' + lines.join('\n');
-    if (total) msg += '\n\nToplam: ' + total + ' ₺';
-    if (name) msg += '\n\nAd Soyad: ' + name;
-    if (phone) msg += '\nTelefon: ' + phone;
-    if (address) msg += '\nAdres: ' + address;
-    if (note) msg += '\nNot: ' + note;
-    const url = 'https://wa.me/902124330140?text=' + encodeURIComponent(msg);
-    window.open(url, '_blank');
-  }
-
-  // header button hook
-  document.addEventListener('DOMContentLoaded', () => {
-    renderOrder();
-    openOrder();
-  });
 </script>
 
 </body>

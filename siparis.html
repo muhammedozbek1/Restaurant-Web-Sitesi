@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Sipariş — Ali Baba Pide ve Lahmacun Salonu</title>
+<meta name="description" content="Ali Baba Pide ve Lahmacun Salonu online sipariş. Ürün seçin, WhatsApp ile gönderin." />
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+tailwind.config = { theme: { extend: {
+  fontFamily: { display: ['Fraunces','Georgia','serif'], sans: ['Manrope','system-ui','sans-serif'] },
+  colors: { paper:'#f5ede0', ink:'#1f1410', clay:'#b85c38', ember:'#d97706', gold:'#c9a227', moss:'#5a6b4a', soot:'#2b1d17' }
+}}};
+</script>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Manrope:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root { --noise: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='160' height='160'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0.12  0 0 0 0 0.08  0 0 0 0 0.06  0 0 0 0.08 0'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>"); }
+  * { -webkit-font-smoothing: antialiased; }
+  html { scroll-behavior: smooth; }
+  body { font-family: 'Manrope', system-ui, sans-serif; background-color: #f5ede0; color: #1f1410; }
+  .paper-bg { background-color: #f5ede0; background-image: var(--noise), radial-gradient(1200px 600px at 10% -10%, #e9d9bf 0%, transparent 60%), radial-gradient(900px 500px at 100% 20%, #ecdcc3 0%, transparent 55%); }
+  .ink-bg { background-color: #1f1410; background-image: var(--noise); }
+  .clay-bg { background-color: #b85c38; background-image: var(--noise); }
+  .display { font-family: 'Fraunces', Georgia, serif; font-optical-sizing: auto; }
+  .btn-clay { background: #b85c38; color: #f5ede0; transition: background .2s, transform .2s; }
+  .btn-clay:hover { background: #9f4e2f; transform: translateY(-1px); }
+  .product-card { transition: transform .2s ease, box-shadow .2s ease, border-color .2s; }
+  .product-card:hover { transform: translateY(-3px); box-shadow: 0 14px 30px rgba(31,20,16,.12); border-color: #b85c38; }
+</style>
+</head>
+<body class="paper-bg">
+
+<!-- Üst bar -->
+<div class="ink-bg text-paper text-center text-[12px] tracking-wider py-2.5 px-4">
+  İnönü Mah. 381. Sok. No:26B, Bağcılar / İstanbul &nbsp;•&nbsp;
+  <a href="tel:+902124330140" class="underline underline-offset-2 text-gold">0212 433 01 40</a>
+  &nbsp;•&nbsp; Her gün açık 08:00 – 20:30
+</div>
+
+<header class="sticky top-0 z-40 bg-paper/90 backdrop-blur border-b border-ink/10">
+  <div class="max-w-[1200px] mx-auto px-6 h-[74px] flex items-center justify-between">
+    <a href="index.html" class="flex items-center gap-3">
+      <span class="w-11 h-11 rounded-full bg-clay text-paper flex items-center justify-center font-display text-2xl shadow-md">A</span>
+      <span>
+        <span class="block font-display text-xl leading-none">Ali Baba</span>
+        <span class="block text-[10px] tracking-[0.35em] uppercase text-ink/50 mt-1">Sipariş</span>
+      </span>
+    </a>
+    <a href="index.html" class="text-xs tracking-[0.2em] uppercase text-ink/60 hover:text-clay">← Ana Sayfa</a>
+  </div>
+</header>
+
+<main class="max-w-[1200px] mx-auto px-6 py-12">
+  <div class="text-center mb-10">
+    <p class="text-[11px] tracking-[0.4em] uppercase text-clay">Sipariş</p>
+    <h1 class="display text-4xl md:text-5xl mt-2">Ürünleri Seçin</h1>
+    <p class="text-sm text-ink/60 mt-3 max-w-[560px] mx-auto">Adet seçin, bilgilerinizi girin ve WhatsApp ile gönderin. Fiyatı olmayan ürünler için lütfen arayın.</p>
+  </div>
+
+  <div id="productGrids"></div>
+
+  <!-- Sepet özeti -->
+  <div class="mt-12 bg-white rounded-3xl border border-ink/10 p-6 shadow-sm">
+    <div class="flex items-center justify-between mb-4">
+      <h2 class="display text-2xl">Sipariş Özeti</h2>
+      <span id="orderTotal" class="display text-2xl text-clay">0 ₺</span>
+    </div>
+    <div id="orderSummary" class="text-sm text-ink/70 mb-4 space-y-1"></div>
+    <div class="grid md:grid-cols-2 gap-3 mb-3">
+      <input id="custName" type="text" placeholder="Ad Soyad" class="px-4 py-3 rounded-xl border border-ink/15 bg-paper text-sm focus:outline-none focus:border-clay" />
+      <input id="custPhone" type="tel" placeholder="Telefon" class="px-4 py-3 rounded-xl border border-ink/15 bg-paper text-sm focus:outline-none focus:border-clay" />
+    </div>
+    <input id="custAddress" type="text" placeholder="Adres / Teslimat notu" class="w-full px-4 py-3 rounded-xl border border-ink/15 bg-paper text-sm focus:outline-none focus:border-clay mb-3" />
+    <textarea id="custNote" rows="2" placeholder="Ek not (isteğe bağlı)" class="w-full px-4 py-3 rounded-xl border border-ink/15 bg-paper text-sm focus:outline-none focus:border-clay mb-4"></textarea>
+    <div class="flex flex-wrap gap-3">
+      <button type="button" onclick="sendOrder()" class="btn-clay px-8 py-3.5 rounded-full text-xs tracking-[0.2em] uppercase shadow-lg">WhatsApp'a Gönder</button>
+      <button type="button" onclick="clearOrder()" class="border border-ink/20 px-8 py-3.5 rounded-full text-xs tracking-[0.2em] uppercase hover:border-clay hover:text-clay">Temizle</button>
+    </div>
+  </div>
+</main>
+
+<footer class="ink-bg text-paper mt-10">
+  <div class="max-w-[1200px] mx-auto px-6 py-10 flex flex-col md:flex-row items-center justify-between gap-4">
+    <p class="display text-2xl">Ali Baba <span class="text-paper/40 text-sm font-sans tracking-[0.3em] uppercase">Pide • Lahmacun</span></p>
+    <p class="text-xs text-paper/60 text-center">İnönü Mah. 381. Sok. No:26B, Bağcılar / İstanbul • 0212 433 01 40</p>
+    <p class="text-xs text-paper/40">© 2026</p>
+  </div>
+</footer>
+
+<a href="https://wa.me/902124330140?text=Merhaba%2C%20sipari%C5%9F%20vermek%20istiyorum" target="_blank" rel="noopener" aria-label="WhatsApp'tan Sipariş" class="fixed bottom-[88px] right-5 z-50 w-[54px] h-[54px] rounded-full bg-[#25D366] text-white flex items-center justify-center shadow-xl hover:scale-105 transition">
+  <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413z"/></svg>
+</a>
+
+<script>
+  const MENU = [
+    {cat:'Lahmacunlar', name:'Lahmacun', price:80, icon:'🔥'},
+    {cat:'Lahmacunlar', name:'Evcil Lahmacun (K / B)', price:null, icon:'🫓'},
+    {cat:'Lahmacunlar', name:'Malatya Lahmacun', price:150, icon:'🌶️'},
+    {cat:'Lahmacunlar', name:'Hatay Biberli Ekmek', price:null, icon:'🌶️'},
+    {cat:'Pideler', name:'Kıymalı Pide', price:150, icon:'🥩'},
+    {cat:'Pideler', name:'Kıymalı Kaşarlı Pide', price:200, icon:'🧀'},
+    {cat:'Pideler', name:'Kavurmalı Pide', price:null, icon:'🥩'},
+    {cat:'Pideler', name:'Kavurmalı Kaşarlı Pide', price:225, icon:'🧀'},
+    {cat:'Pideler', name:'Kavurmalı Yumurtalı Pide', price:225, icon:'🥚'},
+    {cat:'Pideler', name:'Karışık Pide', price:225, icon:'🍕'},
+    {cat:'Pideler', name:'Kaşarlı Pide', price:175, icon:'🧀'},
+    {cat:'Pideler', name:'Kaşarlı Sucuklu Pide', price:200, icon:'🌭'},
+    {cat:'Pideler', name:'Sucuklu Yumurtalı Pide', price:150, icon:'🍳'},
+    {cat:'Katmerler', name:'Kıymalı Katmer', price:null, icon:'🥟'},
+    {cat:'Katmerler', name:'Sucuklu Katmer', price:null, icon:'🌭'},
+    {cat:'Katmerler', name:'Peynirli Katmer', price:null, icon:'🧀'},
+    {cat:'Katmerler', name:'Patatesli Katmer', price:null, icon:'🥔'},
+    {cat:'Katmerler', name:'Yağlı Katmer', price:null, icon:'🧈'},
+    {cat:'Katmerler', name:'Tırnaklı / Evcil Pide', price:null, icon:'🫓'},
+    {cat:'Katmerler', name:'Lavaş', price:null, icon:'🫓'}
+  ];
+  const qty = {};
+  MENU.forEach(m => qty[m.name] = 0);
+
+  function render() {
+    const root = document.getElementById('productGrids');
+    const cats = [...new Set(MENU.map(m=>m.cat))];
+    root.innerHTML = cats.map(cat => `
+      <div class="mb-10">
+        <p class="text-[10px] tracking-[0.35em] uppercase text-clay mb-4">${cat}</p>
+        <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4">
+          ${MENU.filter(m=>m.cat===cat).map(m => `
+            <div class="product-card aspect-square rounded-2xl bg-white border border-ink/10 p-4 flex flex-col items-center justify-center text-center">
+              <span class="text-3xl mb-2">${m.icon}</span>
+              <h3 class="display text-base leading-tight text-ink">${m.name}</h3>
+              <p class="text-xs text-ink/50 mt-1">${m.price ? m.price + ' ₺' : 'Fiyat sorunuz'}</p>
+              <div class="flex items-center gap-2 mt-3">
+                <button type="button" onclick="chg('${m.name}',-1)" class="w-8 h-8 rounded-full bg-ink/5 hover:bg-ink/10 flex items-center justify-center text-ink">−</button>
+                <span id="q_${m.name}" class="w-6 text-center text-sm font-medium">${qty[m.name]}</span>
+                <button type="button" onclick="chg('${m.name}',1)" class="w-8 h-8 rounded-full bg-clay text-paper hover:bg-[#9f4e2f] flex items-center justify-center">+</button>
+              </div>
+            </div>
+          `).join('')}
+        </div>
+      </div>
+    `).join('');
+    updateTotal();
+  }
+
+  function chg(name, d) {
+    qty[name] = Math.max(0, (qty[name]||0) + d);
+    const el = document.getElementById('q_' + name);
+    if (el) el.textContent = qty[name];
+    updateTotal();
+  }
+
+  function updateTotal() {
+    let total = 0;
+    MENU.forEach(m => { if (m.price && qty[m.name]) total += m.price * qty[m.name]; });
+    document.getElementById('orderTotal').textContent = total ? total + ' ₺' : '0 ₺';
+    const summary = document.getElementById('orderSummary');
+    const lines = MENU.filter(m=>qty[m.name]>0).map(m => `• ${m.name} x${qty[m.name]}${m.price ? ' — ' + (m.price*qty[m.name]) + ' ₺' : ''}`);
+    summary.innerHTML = lines.length ? lines.map(l=>'<div>'+l+'</div>').join('') : '<div class="text-ink/40">Henüz ürün seçmediniz.</div>';
+  }
+
+  function clearOrder() {
+    MENU.forEach(m => qty[m.name]=0);
+    render();
+  }
+
+  function sendOrder() {
+    const lines = MENU.filter(m=>qty[m.name]>0).map(m => `• ${m.name} x${qty[m.name]}${m.price ? ' — ' + (m.price*qty[m.name]) + ' ₺' : ''}`);
+    if (!lines.length) { alert('Lütfen en az bir ürün seçin.'); return; }
+    const total = MENU.reduce((s,m)=> s + (m.price && qty[m.name] ? m.price*qty[m.name] : 0), 0);
+    const name = document.getElementById('custName').value.trim();
+    const phone = document.getElementById('custPhone').value.trim();
+    const address = document.getElementById('custAddress').value.trim();
+    const note = document.getElementById('custNote').value.trim();
+    let msg = 'Merhaba, sipariş vermek istiyorum:\n\n' + lines.join('\n');
+    if (total) msg += '\n\nToplam: ' + total + ' ₺';
+    if (name) msg += '\n\nAd Soyad: ' + name;
+    if (phone) msg += '\nTelefon: ' + phone;
+    if (address) msg += '\nAdres: ' + address;
+    if (note) msg += '\nNot: ' + note;
+    const url = 'https://wa.me/902124330140?text=' + encodeURIComponent(msg);
+    window.open(url, '_blank');
+  }
+
+  render();
+</script>
+</body>
+</html>
