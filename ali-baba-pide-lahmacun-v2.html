@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Ali Baba Pide ve Lahmacun Salonu — Bağcılar İstanbul</title>
+<meta name="description" content="Ali Baba Pide ve Lahmacun Salonu — Bağcılar İnönü Mah. Taş fırından pide, lahmacun, katmer. Sıcak, rustik ve otantik." />
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+tailwind.config = { theme: { extend: {
+  fontFamily: { display: ['Fraunces','Georgia','serif'], sans: ['Manrope','system-ui','sans-serif'] },
+  colors: { paper:'#f5ede0', ink:'#1f1410', clay:'#b85c38', ember:'#d97706', gold:'#c9a227', moss:'#5a6b4a', soot:'#2b1d17' }
+}}};
+</script>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Manrope:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root { --noise: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='160' height='160'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0.12  0 0 0 0 0.08  0 0 0 0 0.06  0 0 0 0.08 0'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>"); }
+  * { -webkit-font-smoothing: antialiased; }
+  html { scroll-behavior: smooth; }
+  body { font-family: 'Manrope', system-ui, sans-serif; background-color: #f5ede0; color: #1f1410; }
+  .paper-bg { background-color: #f5ede0; background-image: var(--noise), radial-gradient(1200px 600px at 10% -10%, #e9d9bf 0%, transparent 60%), radial-gradient(900px 500px at 100% 20%, #ecdcc3 0%, transparent 55%); }
+  .ink-bg { background-color: #1f1410; background-image: var(--noise); }
+  .clay-bg { background-color: #b85c38; background-image: var(--noise); }
+  .display { font-family: 'Fraunces', Georgia, serif; font-optical-sizing: auto; }
+  .menu-card { transition: transform .3s ease, box-shadow .3s ease; }
+  .menu-card:hover { transform: translateY(-4px); box-shadow: 0 18px 40px rgba(31,20,16,.12); }
+  .btn-clay { background: #b85c38; color: #f5ede0; transition: background .2s, transform .2s; }
+  .btn-clay:hover { background: #9f4e2f; transform: translateY(-1px); }
+  .btn-ghost { border: 1.5px solid rgba(245,237,224,.5); color: #f5ede0; transition: all .2s; }
+  .btn-ghost:hover { background: #f5ede0; color: #1f1410; }
+  .divider { background: linear-gradient(90deg, transparent, #b85c38, transparent); height: 1px; }
+  .reveal { opacity: 0; transform: translateY(18px); transition: opacity .7s ease, transform .7s ease; }
+  .reveal.in { opacity: 1; transform: none; }
+  @keyframes float { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-6px)} }
+  .float { animation: float 4s ease-in-out infinite; }
+</style>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Restaurant",
+  "name": "Ali Baba Pide ve Lahmacun Salonu",
+  "servesCuisine": ["Turkish","Pide","Lahmacun"],
+  "telephone": "+902124330140",
+  "address": {"@type":"PostalAddress","streetAddress":"İnönü Mah. 381. Sok. No:26B","addressLocality":"Bağcılar","addressRegion":"İstanbul","postalCode":"34203","addressCountry":"TR"},
+  "openingHours": ["Mo-Sa 08:00-20:00","Su 08:00-20:30"],
+  "aggregateRating": {"@type":"AggregateRating","ratingValue":"4.3","reviewCount":"25"}
+}
+</script>
+</head>
+<body class="paper-bg">
+
+<!-- Üst bar -->
+<div class="ink-bg text-paper text-center text-[12px] tracking-wider py-2.5 px-4">
+  İnönü Mah. 381. Sok. No:26B, Bağcılar / İstanbul &nbsp;•&nbsp;
+  <a href="tel:+902124330140" class="underline underline-offset-2 text-gold">0212 433 01 40</a>
+  &nbsp;•&nbsp; Her gün açık 08:00 – 20:30
+</div>
+
+<!-- Header -->
+<header class="sticky top-0 z-40 bg-paper/90 backdrop-blur border-b border-ink/10">
+  <div class="max-w-[1200px] mx-auto px-6 h-[74px] flex items-center justify-between">
+    <a href="#top" class="flex items-center gap-3">
+      <span class="w-11 h-11 rounded-full bg-clay text-paper flex items-center justify-center font-display text-2xl shadow-md">A</span>
+      <span>
+        <span class="block font-display text-xl leading-none">Ali Baba</span>
+        <span class="block text-[10px] tracking-[0.35em] uppercase text-ink/50 mt-1">Pide • Lahmacun • Katmer</span>
+      </span>
+    </a>
+    <nav class="hidden md:flex items-center gap-8 text-[12px] tracking-[0.2em] uppercase text-ink/60">
+      <a href="#menu" class="hover:text-clay">Menü</a>
+      <a href="#hakkimizda" class="hover:text-clay">Hakkımızda</a>
+      <a href="#iletisim" class="hover:text-clay">İletişim</a>
+      <a href="#konum" class="hover:text-clay">Konum</a>
+    </nav>
+    <a href="tel:+902124330140" class="btn-clay px-5 py-2.5 rounded-full text-xs tracking-[0.2em] uppercase">Ara</a>
+  </div>
+</header>
+
+<!-- Hero -->
+<section id="top" class="relative min-h-[90vh] flex items-center overflow-hidden">
+  <div class="absolute inset-0" style="background: linear-gradient(135deg, #2b1d17 0%, #5a2a1a 40%, #b85c38 100%);"></div>
+  <img src="https://images.unsplash.com/photo-1590947130387-155cc02e297f?w=1600&q=80&auto=format&fit=crop" alt="Taş fırından pide" class="absolute inset-0 w-full h-full object-cover" loading="eager"
+    onerror="this.style.display='none'" />
+  <div class="absolute inset-0 bg-gradient-to-r from-ink/90 via-ink/55 to-ink/10"></div>
+  <div class="absolute inset-0 bg-gradient-to-t from-ink/40 via-transparent to-transparent"></div>
+  <div class="relative max-w-[1200px] mx-auto px-6 py-24 w-full">
+    <div class="max-w-[620px]">
+      <p class="text-[11px] tracking-[0.4em] uppercase text-gold">Taş Fırın • Bağcılar • İnönü Mah.</p>
+      <h1 class="display text-5xl md:text-7xl leading-[0.95] mt-5 text-paper">Ali Baba<br/><span class="text-clay italic">Pide & Lahmacun</span></h1>
+      <p class="text-paper/80 mt-6 leading-relaxed text-lg max-w-[500px]">Ev yapımı kıymayla, taş fırından sıcacık pideler ve çıtır lahmacunlar. Sade, sıcak ve mahallenin fırını.</p>
+      <div class="flex flex-wrap gap-3 mt-9">
+        <a href="#menu" class="btn-clay px-8 py-3.5 rounded-full text-xs tracking-[0.2em] uppercase shadow-lg">Menüyü Gör</a>
+        <a href="https://www.google.com/maps/search/?api=1&query=Ali+Baba+Pide+ve+Lahmacun+Salonu+%C4%B0n%C3%B6n%C3%BC+Mah.+381.+Sok.+No:26B+Ba%C4%9Fc%C4%B1lar+%C4%B0stanbul" target="_blank" rel="noopener" class="btn-ghost px-8 py-3.5 rounded-full text-xs tracking-[0.2em] uppercase">Yol Tarifi</a>
+      </div>
+      <div class="flex items-center gap-3 mt-9 text-sm text-paper/80">
+        <span class="text-gold text-base">★★★★</span><span class="text-paper/40">☆</span>
+        <span><b class="text-paper">4,3 / 5</b> &nbsp;·&nbsp; 25 değerlendirme</span>
+      </div>
+    </div>
+  </div>
+  <!-- günlük saat rozeti -->
+  <div class="hidden md:block absolute bottom-10 right-10 float">
+    <div class="bg-paper/95 backdrop-blur rounded-2xl px-6 py-4 shadow-xl border border-ink/10 text-ink min-w-[200px]">
+      <p class="text-[10px] tracking-[0.3em] uppercase text-ink/50">Bugün</p>
+      <p class="display text-xl mt-1">08:00 – 20:30</p>
+      <p class="text-xs text-moss mt-0.5 font-medium">● Açık</p>
+      <a href="tel:+902124330140" class="mt-3 block text-center btn-clay px-4 py-2 rounded-full text-[10px] tracking-[0.2em] uppercase">Sipariş Ver</a>
+    </div>
+  </div>
+</section>
+
+<!-- Öne çıkanlar -->
+<section class="max-w-[1200px] mx-auto px-6 py-16">
+  <div class="grid sm:grid-cols-3 gap-5">
+    <div class="bg-paper border border-ink/10 rounded-2xl p-7 text-center shadow-sm reveal">
+      <p class="text-3xl">🔥</p>
+      <h3 class="display text-xl mt-3">Taş Fırın</h3>
+      <p class="text-sm text-ink/60 mt-2 leading-relaxed">Odun ateşi lezzeti, çıtır hamur, dumanı üstünde servis.</p>
+    </div>
+    <div class="bg-ink text-paper rounded-2xl p-7 text-center shadow-lg reveal">
+      <p class="text-3xl">🥩</p>
+      <h3 class="display text-xl mt-3">Ev Yapımı Kıyma</h3>
+      <p class="text-sm text-paper/70 mt-2 leading-relaxed">Günlük hazırlanan iç harcı, taze ve katkısız.</p>
+    </div>
+    <div class="bg-paper border border-ink/10 rounded-2xl p-7 text-center shadow-sm reveal">
+      <p class="text-3xl">📦</p>
+      <h3 class="display text-xl mt-3">Paket Servis</h3>
+      <p class="text-sm text-ink/60 mt-2 leading-relaxed">Telefonla sipariş, sıcak teslimat, mevlüt ve toplu sipariş.</p>
+    </div>
+  </div>
+</section>
+
+<!-- Menü -->
+<section id="menu" class="ink-bg text-paper border-y border-ink/20">
+  <div class="max-w-[1200px] mx-auto px-6 py-20">
+    <p class="text-[11px] tracking-[0.4em] uppercase text-gold text-center">Menümüz</p>
+    <h2 class="display text-4xl md:text-6xl text-center mt-3">Sade ve Lezzetli</h2>
+    <p class="text-sm text-paper/60 text-center mt-4 max-w-[560px] mx-auto">Fiyatlar dönemsel değişebilir. Güncel fiyat için lütfen <a href="tel:+902124330140" class="underline text-gold">0212 433 01 40</a> numaralı telefonu arayın.</p>
+
+    <div class="grid md:grid-cols-3 gap-6 mt-14">
+      <!-- Lahmacun -->
+      <div class="menu-card bg-soot rounded-2xl p-8 border border-paper/5">
+        <p class="text-[10px] tracking-[0.35em] uppercase text-paper/40">Fırından</p>
+        <h3 class="display text-2xl mt-2 text-paper">Lahmacunlar</h3>
+        <div class="divider mt-4 mb-5"></div>
+        <ul class="space-y-4 text-[15px]">
+          <li class="flex justify-between gap-3"><span>Lahmacun</span><span class="text-paper/40 text-sm">klasik</span></li>
+          <li class="flex justify-between gap-3"><span>Evcil Lahmacun <span class="text-paper/40 text-xs">(K / B)</span></span><span class="text-gold text-sm">★</span></li>
+          <li class="flex justify-between gap-3"><span>Malatya Lahmacun</span><span class="text-paper/40 text-sm">yöresel</span></li>
+          <li class="flex justify-between gap-3"><span>Hatay Biberli Ekmek</span><span class="text-paper/40 text-sm">acılı</span></li>
+        </ul>
+      </div>
+      <!-- Pide -->
+      <div class="menu-card bg-clay text-paper rounded-2xl p-8 shadow-2xl relative overflow-hidden">
+        <div class="absolute -top-10 -right-10 w-40 h-40 rounded-full bg-ember/30 blur-2xl"></div>
+        <p class="text-[10px] tracking-[0.35em] uppercase text-paper/70">En Sevilenler</p>
+        <h3 class="display text-2xl mt-2">Pideler</h3>
+        <div class="divider bg-paper/30 mt-4 mb-5"></div>
+        <ul class="space-y-3 text-[15px]">
+          <li class="flex justify-between gap-3 border-b border-paper/15 pb-2"><span>Kıymalı Pide</span><span class="text-paper/60 text-sm">klasik</span></li>
+          <li class="flex justify-between gap-3 border-b border-paper/15 pb-2"><span>Kıymalı Kaşarlı Pide</span><span class="text-paper/60 text-sm">popüler</span></li>
+          <li class="flex justify-between gap-3 border-b border-paper/15 pb-2"><span>Kavurmalı Pide</span><span class="text-gold text-sm">★ şef önerisi</span></li>
+          <li class="flex justify-between gap-3 border-b border-paper/15 pb-2"><span>Kavurmalı Kaşarlı Pide</span><span class="text-paper/60 text-sm">bol kaşarlı</span></li>
+          <li class="flex justify-between gap-3 border-b border-paper/15 pb-2"><span>Karışık Pide</span><span class="text-paper/60 text-sm">karışık</span></li>
+          <li class="flex justify-between gap-3 border-b border-paper/15 pb-2"><span>Kaşarlı Pide</span><span class="text-paper/60 text-sm">vejetaryen</span></li>
+          <li class="flex justify-between gap-3"><span>Sucuklu Yumurtalı Pide</span><span class="text-paper/60 text-sm">sucuklu</span></li>
+        </ul>
+      </div>
+      <!-- Katmer -->
+      <div class="menu-card bg-soot rounded-2xl p-8 border border-paper/5">
+        <p class="text-[10px] tracking-[0.35em] uppercase text-paper/40">Katmer & Ekmek</p>
+        <h3 class="display text-2xl mt-2 text-paper">Katmerler</h3>
+        <div class="divider mt-4 mb-5"></div>
+        <ul class="space-y-4 text-[15px]">
+          <li class="flex justify-between gap-3"><span>Kıymalı Katmer</span><span class="text-paper/40 text-sm">tok tutar</span></li>
+          <li class="flex justify-between gap-3"><span>Sucuklu Katmer</span><span class="text-paper/40 text-sm">sucuklu</span></li>
+          <li class="flex justify-between gap-3"><span>Peynirli Katmer</span><span class="text-paper/40 text-sm">peynirli</span></li>
+          <li class="flex justify-between gap-3"><span>Patatesli Katmer</span><span class="text-paper/40 text-sm">patatesli</span></li>
+          <li class="flex justify-between gap-3"><span>Yağlı Katmer</span><span class="text-paper/40 text-sm">sade</span></li>
+          <li class="flex justify-between gap-3"><span>Tırnaklı / Evcil Pide</span><span class="text-paper/40 text-sm">ekmek</span></li>
+          <li class="flex justify-between gap-3"><span>Lavaş</span><span class="text-paper/40 text-sm">sıcak</span></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="flex flex-wrap justify-center gap-3 mt-12">
+      <a href="tel:+902124330140" class="btn-clay px-8 py-3.5 rounded-full text-xs tracking-[0.2em] uppercase shadow-lg">Telefonla Sipariş: 0212 433 01 40</a>
+      <a href="https://wa.me/902124330140?text=Merhaba%2C%20sipari%C5%9F%20vermek%20istiyorum" target="_blank" rel="noopener" class="bg-[#25D366] text-white px-8 py-3.5 rounded-full text-xs tracking-[0.2em] uppercase hover:brightness-95">WhatsApp'tan Sipariş</a>
+    </div>
+  </div>
+</section>
+
+<!-- Hakkımızda -->
+<section id="hakkimizda" class="max-w-[1200px] mx-auto px-6 py-20 grid md:grid-cols-2 gap-12 items-center">
+  <div class="relative reveal">
+    <img src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=900&q=80&auto=format&fit=crop" alt="Salon" class="w-full h-[340px] md:h-[460px] object-cover rounded-3xl shadow-xl" loading="lazy" style="background:#e9d9bf" onerror="this.style.visibility='hidden'" />
+    <div class="absolute -bottom-6 -right-6 bg-clay text-paper rounded-2xl px-5 py-4 shadow-xl hidden md:block">
+      <p class="text-[10px] tracking-[0.3em] uppercase text-paper/70">Molla Gürani</p>
+      <p class="display text-lg mt-1">~340 m yürüme</p>
+    </div>
+  </div>
+  <div class="reveal">
+    <p class="text-[11px] tracking-[0.4em] uppercase text-clay">Hakkımızda</p>
+    <h2 class="display text-4xl md:text-5xl mt-3 leading-tight">Mahallenin Fırını,<br/>Evin Sofrası</h2>
+    <p class="text-ink/70 mt-5 leading-relaxed text-[15px]">İnönü Mahallesi'nde, Molla Gürani metro durağına yürüme mesafesindeyiz. Mevlüt ve toplu siparişler için lahmacun ve pide hazırlıyoruz. Dürüst hizmet, uygun fiyat, tazecik ürün — misafirlerimizin yorumlarında en çok bunlar geçiyor.</p>
+    <ul class="mt-6 space-y-3 text-sm text-ink/70">
+      <li class="flex items-center gap-3"><span class="w-6 h-6 rounded-full bg-clay/15 text-clay flex items-center justify-center text-xs">✓</span> Mevlüt ve toplu sipariş yapılır</li>
+      <li class="flex items-center gap-3"><span class="w-6 h-6 rounded-full bg-clay/15 text-clay flex items-center justify-center text-xs">✓</span> Salonda servis + paket servis</li>
+      <li class="flex items-center gap-3"><span class="w-6 h-6 rounded-full bg-clay/15 text-clay flex items-center justify-center text-xs">✓</span> Molla Gürani durağına ~340 m</li>
+    </ul>
+    <blockquote class="mt-8 border-l-4 border-clay pl-5 text-ink/80 italic display text-lg">"Dürüst hizmet, uygun fiyat, tazecik ürün."</blockquote>
+  </div>
+</section>
+
+<!-- İletişim + Saatler -->
+<section id="iletisim" class="clay-bg text-paper">
+  <div class="max-w-[1200px] mx-auto px-6 py-20">
+    <p class="text-[11px] tracking-[0.4em] uppercase text-paper/70 text-center">İletişim</p>
+    <h2 class="display text-4xl md:text-5xl text-center mt-3">Bize Ulaşın</h2>
+    <div class="grid md:grid-cols-3 gap-5 mt-12">
+      <div class="bg-ink/40 backdrop-blur rounded-2xl border border-paper/10 p-8">
+        <h3 class="text-[10px] tracking-[0.3em] uppercase text-gold">Adres</h3>
+        <p class="font-medium mt-3 text-lg leading-snug">İnönü Mah. 381. Sok. No:26B<br/>Bağcılar / İstanbul</p>
+        <a class="text-sm underline underline-offset-4 mt-4 inline-block text-paper/80 hover:text-gold" target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&query=Ali+Baba+Pide+ve+Lahmacun+Salonu+%C4%B0n%C3%B6n%C3%BC+Mah.+381.+Sok.+No:26B+Ba%C4%9Fc%C4%B1lar+%C4%B0stanbul">Google Maps'te Aç →</a>
+      </div>
+      <div class="bg-ink/40 backdrop-blur rounded-2xl border border-paper/10 p-8">
+        <h3 class="text-[10px] tracking-[0.3em] uppercase text-gold">Telefon</h3>
+        <p class="font-medium mt-3 text-2xl"><a href="tel:+902124330140" class="hover:text-gold">0212 433 01 40</a></p>
+        <p class="text-sm text-paper/70 mt-2">Sipariş ve toplu sipariş için arayın.</p>
+        <a class="text-sm underline underline-offset-4 mt-4 inline-block text-paper/80 hover:text-gold" href="tel:+902124330140">Hemen Ara →</a>
+      </div>
+      <div class="bg-ink/40 backdrop-blur rounded-2xl border border-paper/10 p-8">
+        <h3 class="text-[10px] tracking-[0.3em] uppercase text-gold">Çalışma Saatleri</h3>
+        <ul class="mt-3 text-[15px] space-y-2">
+          <li class="flex justify-between"><span>Pzt – Cmt</span><span class="font-medium">08:00 – 20:00</span></li>
+          <li class="flex justify-between"><span>Pazar</span><span class="font-medium">08:00 – 20:30</span></li>
+        </ul>
+        <p class="text-xs text-paper/50 mt-4">Tatil günlerinde arayarak teyit edin.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Konum -->
+<section id="konum" class="max-w-[1200px] mx-auto px-6 py-20">
+  <p class="text-[11px] tracking-[0.4em] uppercase text-clay text-center">Konum</p>
+  <h2 class="display text-4xl md:text-5xl text-center mt-2">Bize Ulaşın</h2>
+  <div class="mt-10 rounded-3xl overflow-hidden border border-ink/10 shadow-xl">
+    <iframe title="Ali Baba Pide ve Lahmacun Salonu Konum" src="https://www.google.com/maps?q=Ali+Baba+Pide+ve+Lahmacun+Salonu+%C4%B0n%C3%B6n%C3%BC+Mahallesi+381.+Sokak+No:26B+Ba%C4%9Fc%C4%B1lar+%C4%B0stanbul&output=embed" class="w-full h-[380px] md:h-[460px] border-0" loading="lazy" referrerpolicy="no-referrer-when-downgrade" allowfullscreen></iframe>
+  </div>
+  <div class="flex flex-wrap justify-center gap-3 mt-8">
+    <a href="https://www.google.com/maps/search/?api=1&query=Ali+Baba+Pide+ve+Lahmacun+Salonu+%C4%B0n%C3%B6n%C3%BC+Mah.+381.+Sok.+No:26B+Ba%C4%9Fc%C4%B1lar+%C4%B0stanbul" target="_blank" rel="noopener" class="btn-clay px-8 py-3 rounded-full text-xs tracking-[0.2em] uppercase">Google Maps'te Yol Tarifi</a>
+    <a href="https://yandex.com.tr/maps/org/alibaba_pide_ve_lahmacun/109353626798/" target="_blank" rel="noopener" class="border border-ink/20 px-8 py-3 rounded-full text-xs tracking-[0.2em] uppercase hover:border-clay hover:text-clay">Yandex Maps Profili</a>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer class="ink-bg text-paper">
+  <div class="max-w-[1200px] mx-auto px-6 py-12 flex flex-col md:flex-row items-center justify-between gap-4">
+    <p class="display text-2xl">Ali Baba <span class="text-paper/40 text-sm font-sans tracking-[0.3em] uppercase">Pide • Lahmacun</span></p>
+    <p class="text-xs text-paper/60 text-center">İnönü Mah. 381. Sok. No:26B, Bağcılar / İstanbul • 0212 433 01 40</p>
+    <p class="text-xs text-paper/40">© 2026 • Bilgiler Google/Yandex işletme profilinden derlenmiştir.</p>
+  </div>
+</footer>
+
+<!-- Floating buttons -->
+<a href="https://wa.me/902124330140?text=Merhaba%2C%20sipari%C5%9F%20vermek%20istiyorum" target="_blank" rel="noopener" aria-label="WhatsApp'tan Sipariş" class="fixed bottom-[88px] right-5 z-50 w-[54px] h-[54px] rounded-full bg-[#25D366] text-white flex items-center justify-center shadow-xl hover:scale-105 transition">
+  <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413z"/></svg>
+</a>
+<a href="tel:+902124330140" aria-label="Hemen Ara" class="fixed bottom-5 right-5 z-50 w-[54px] h-[54px] rounded-full bg-ink text-paper flex items-center justify-center shadow-xl hover:scale-105 transition border border-paper/10">
+  <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path d="M5 4h4l2 5-2.5 1.5a12 12 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2Z"/></svg>
+</a>
+
+<script>
+  // reveal on scroll
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('in'); });
+  }, { threshold: 0.15 });
+  document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+</script>
+</body>
+</html>
